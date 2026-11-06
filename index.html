@@ -150,19 +150,22 @@ p{margin:0}
 /* ---------- pages ---------- */
 .page{display:none}
 .page.current{display:block}
-.phead{padding-top:calc(var(--head) + env(safe-area-inset-top,0px))}
-.phead .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:1.5rem 3rem;align-items:end;padding-block:clamp(2.5rem,6vw,4.5rem) clamp(1.5rem,3vw,2.5rem)}
-.phead h1{font-size:var(--h1);margin-top:.9rem}
-.phead p.lede{color:var(--mute);max-width:44ch;justify-self:end;font-size:1rem}
+.phead{position:relative;overflow:hidden;padding-top:calc(var(--head) + env(safe-area-inset-top,0px));color:var(--linen)}
+.pbg{position:absolute;inset:0;overflow:hidden}
+.pbg img{width:100%;height:124%;object-fit:cover;animation:kb 9s ease-out both}
+.pbg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,21,32,.94) 0%,rgba(11,21,32,.72) 42%,rgba(11,21,32,.28) 100%),linear-gradient(0deg,rgba(11,21,32,.6),transparent 40%)}
+.phead .wrap{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:1rem;min-height:clamp(280px,44vh,440px);padding-block:clamp(2rem,4vw,3rem)}
+.phead h1{font-size:var(--h1);margin-top:.7rem;max-width:16ch}
+.phead p.lede{color:var(--linen);opacity:.82;max-width:46ch;font-size:1rem}
 
 /* ---------- HOME ---------- */
 .h-hero{position:relative;overflow:hidden}
 .h-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 80% 40%,rgba(232,134,44,.13),transparent 70%),radial-gradient(40% 40% at 5% 95%,rgba(59,107,120,.22),transparent 70%);pointer-events:none}
 .stars{position:absolute;inset:0;pointer-events:none;opacity:.5}
-.h-hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.8fr);gap:clamp(2rem,5vw,5rem);align-items:center;padding-block:calc(var(--head) + env(safe-area-inset-top,0px) + clamp(1.5rem,4vw,3.5rem)) clamp(2.5rem,5vw,4rem)}
+.h-hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2rem,4vw,4rem);align-items:center;padding-block:calc(var(--head) + env(safe-area-inset-top,0px) + clamp(1.5rem,4vw,3.5rem)) clamp(2.5rem,5vw,4rem)}
 .h-copy{display:flex;flex-direction:column;gap:1.3rem;min-width:0}
-.h-copy h1{font-size:var(--h1)}
-.h-copy h1 .script{display:block;font-family:var(--f-script);color:var(--lamp);font-size:1.25em;line-height:.9;margin-bottom:.12em;letter-spacing:0}
+.h-copy h1{font-size:clamp(2.4rem,5vw,4.4rem)}
+.h-copy h1 .script{display:block;font-family:var(--f-script);color:var(--lamp);font-size:1.6em;line-height:.9;margin-bottom:.05em;letter-spacing:0}
 .h-copy h1 em{font-style:normal;color:var(--moon)}
 .h-copy .lede{max-width:40ch;font-size:1.05rem;color:var(--linen);opacity:.85}
 .cta-row{display:flex;flex-wrap:wrap;gap:.7rem}
@@ -170,7 +173,17 @@ p{margin:0}
 .facts div{display:flex;flex-direction:column;gap:.25rem;min-width:0}
 .facts .mono{color:var(--mute)}
 .facts b{font-weight:500;font-size:.92rem}
-.arch-col{display:flex;flex-direction:column;gap:1rem;align-items:stretch;justify-self:end;width:min(100%,460px)}
+.collage{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);gap:clamp(.8rem,1.5vw,1.2rem);align-items:stretch}
+.arch-col{display:flex;flex-direction:column;gap:1rem;align-items:stretch;min-width:0}
+.side{display:flex;flex-direction:column;gap:clamp(.8rem,1.5vw,1.2rem);padding-bottom:3.1rem;min-width:0}
+.side-plate{display:block;aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 0 1px rgba(243,192,122,.2),0 20px 50px rgba(0,0,0,.4);margin-top:clamp(1rem,4vw,3rem)}
+.side-plate img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.side-plate:hover img{transform:rotate(18deg) scale(1.05)}
+.side-card{position:relative;display:block;flex:1;min-height:140px;border-radius:6px;overflow:hidden;text-decoration:none}
+.side-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.side-card:hover img{transform:scale(1.06)}
+.chip{position:absolute;left:10px;bottom:10px;background:rgba(11,21,32,.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--linen);padding:.4rem .65rem;border-radius:999px}
+.h-info{display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;color:var(--mute);border-top:1px solid var(--line);padding-top:1rem;margin-top:.4rem}
 .arch{position:relative;aspect-ratio:4/5;border-radius:50% 50% 10px 10px / 34% 34% 10px 10px;overflow:hidden;background:var(--night-2);box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(243,192,122,.22);will-change:transform}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.3s ease}
 .slide.on{opacity:1}
@@ -212,8 +225,8 @@ p{margin:0}
 .intro .par figcaption{position:absolute;left:12px;bottom:12px;background:rgba(11,21,32,.7);padding:.35rem .6rem;border-radius:3px;backdrop-filter:blur(6px)}
 
 .teasers .wrap{padding-bottom:clamp(4rem,8vw,7rem)}
-.t-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:clamp(1.5rem,3vw,2.2rem);border-top:1px solid var(--line);padding-top:clamp(2rem,4vw,3rem)}
-.t-head h2{font-size:var(--h2);margin-top:.6rem}
+.t-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:clamp(1.2rem,2.5vw,2rem);padding-top:clamp(3rem,6vw,5rem)}
+.t-head h2{font-size:var(--h2)}
 .t-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,1.6rem)}
 .teaser{position:relative;display:flex;flex-direction:column;gap:.9rem;text-decoration:none;min-width:0}
 .teaser figure{margin:0;overflow:hidden;border-radius:4px;position:relative;aspect-ratio:4/5}
@@ -235,7 +248,7 @@ p{margin:0}
 .band p{opacity:.85;margin-top:.5rem}
 
 /* ---------- O NAMA ---------- */
-.a-intro .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center;padding-block:clamp(1rem,3vw,2rem) clamp(3.5rem,7vw,6rem)}
+.a-intro .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center;padding-block:clamp(2.5rem,5vw,4.5rem) clamp(3rem,6vw,5rem)}
 .a-txt{display:flex;flex-direction:column;gap:1.1rem;min-width:0}
 .a-txt h2{font-size:var(--h2)}
 .a-txt p{color:var(--mute);max-width:52ch}
@@ -271,7 +284,7 @@ p{margin:0}
 .ph.full{background:currentColor}
 
 /* ---------- MENI ---------- */
-.menu-body{display:grid;grid-template-columns:180px minmax(0,1fr) minmax(0,.85fr);gap:clamp(1.5rem,3vw,2.5rem);align-items:start}
+.menu-body{margin-top:clamp(1.5rem,3vw,2.5rem);display:grid;grid-template-columns:180px minmax(0,1fr) minmax(0,.85fr);gap:clamp(1.5rem,3vw,2.5rem);align-items:start}
 .cats{display:flex;flex-direction:column;gap:.3rem;position:sticky;top:calc(var(--head) + 30px)}
 .cats button{all:unset;cursor:pointer;display:flex;align-items:center;gap:.7rem;padding:.6rem .85rem;border-radius:12px;color:var(--mute);transition:background .35s,color .35s;font-size:.95rem;white-space:nowrap}
 .cats button:hover{color:var(--linen)}
@@ -306,9 +319,8 @@ p{margin:0}
 
 /* ---------- GALERIJA ---------- */
 .gal{background:var(--haze);color:var(--haze-ink)}
-.gal .phead .eyebrow{color:var(--sea)}
-.gal .phead p.lede{color:var(--haze-ink);opacity:.7}
-.gal .phead a{color:var(--sea)}
+.gal .phead a{color:var(--lamp)}
+.gal .grid{padding-top:clamp(1.5rem,3vw,2.5rem)}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(46px,5.4vw,78px);gap:clamp(8px,1.1vw,14px);grid-auto-flow:dense;padding-bottom:clamp(4rem,8vw,6rem)}
 .tile{position:relative;margin:0;overflow:hidden;border-radius:3px;background:var(--haze-2)}
 .tile button{all:unset;position:absolute;inset:0;cursor:pointer}
@@ -394,7 +406,7 @@ form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.2rem;
 .link-btn{all:unset;cursor:pointer;color:var(--rust);text-decoration:underline;text-underline-offset:3px;font-size:.92rem}
 
 /* ---------- KONTAKT ---------- */
-.find-body .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(2rem,4vw,4rem);align-items:start;padding-bottom:clamp(4rem,8vw,6rem)}
+.find-body .wrap{padding-top:clamp(1.5rem,3vw,2.5rem);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(2rem,4vw,4rem);align-items:start;padding-bottom:clamp(4rem,8vw,6rem)}
 .mapbox{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--night-2);aspect-ratio:3/2;max-width:100%}
 .mapbox svg{width:100%;height:100%;display:block}
 .mapbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0;animation:rise .7s var(--ease)}
@@ -445,16 +457,17 @@ form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.2rem;
 }
 @media (max-width:860px){
   :root{--head:62px}
-  .phead .wrap{grid-template-columns:minmax(0,1fr)}
-  .phead p.lede{justify-self:start}
+  .phead .wrap{min-height:260px}
   .h-hero .wrap{grid-template-columns:minmax(0,1fr)}
-  .arch-col{justify-self:center;width:min(100%,380px)}
+  .collage{grid-template-columns:minmax(0,1.3fr) minmax(0,.8fr)}
   .facts{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   .facts div:last-child{grid-column:1/-1}
   .scroll-hint{display:none}
   .intro .wrap{grid-template-columns:minmax(0,1fr)}
-  .t-grid{grid-template-columns:minmax(0,1fr)}
-  .teaser figure{aspect-ratio:16/11}
+  .t-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-right:calc(-1*var(--gut-r));padding-right:var(--gut-r);gap:.8rem}
+  .t-grid::-webkit-scrollbar{display:none}
+  .teaser{flex:0 0 64%;scroll-snap-align:start}
+  .teaser figure{aspect-ratio:4/5}
   .a-intro .wrap{grid-template-columns:minmax(0,1fr)}
   .a-fig{max-width:420px;width:100%;justify-self:center}
   .a-trio .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -486,18 +499,19 @@ form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.2rem;
   body{font-size:16px}
   :root{--h1:clamp(2.1rem,9.5vw,2.6rem);--h2:clamp(1.7rem,7.5vw,2.1rem);--h3:1.35rem}
   .mono{font-size:.62rem}
-  .h-hero .wrap{padding-top:calc(var(--head) + env(safe-area-inset-top,0px) + 1.2rem);gap:1.6rem}
+  .h-hero .wrap{padding-top:calc(var(--head) + env(safe-area-inset-top,0px) + .8rem);padding-bottom:2.2rem;gap:1.4rem}
   .h-copy{gap:1.05rem}
   .h-copy .lede{font-size:1rem}
   .cta-row .btn{flex:1 1 auto;justify-content:center}
-  .arch-col{width:100%}
-  .arch{aspect-ratio:4/4.4}
+  .collage{grid-template-columns:minmax(0,1fr)}
+  .side{display:none}
+  .arch{aspect-ratio:1/1;border-radius:46% 46% 8px 8px / 30% 30% 8px 8px}
+  .slide-meta .cap{display:none}
   .intro .wrap,.a-intro .wrap{padding-block:2.5rem 3rem;gap:1.6rem}
   .teasers .wrap,.a-trio .wrap,.values .wrap,.a-wide .wrap{padding-bottom:3rem}
   .values .wrap,.a-wide .wrap{padding-top:3rem}
-  .phead .wrap{padding-block:1.6rem 1.4rem;gap:.9rem}
-  .teaser figure{aspect-ratio:16/12}
-  .t-head{padding-top:2rem}
+  .phead .wrap{padding-block:1.4rem 1.6rem;gap:.7rem;min-height:230px}
+  .t-head{padding-top:2.6rem}
   .band .wrap{padding-block:2.6rem}
   .band .btn{width:100%;justify-content:center}
   .dish button{padding:.95rem 0}
@@ -517,7 +531,8 @@ form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.2rem;
   form{grid-template-columns:minmax(0,1fr)}
   .card-top{flex-direction:column}
   .card-top .mono{text-align:left}
-  .foot .wrap{grid-template-columns:minmax(0,1fr)}
+  .foot .wrap{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6rem 1rem}
+  .foot .wrap>div:nth-child(4){grid-column:1/-1}
 }
 </style>
 </head>
@@ -579,35 +594,36 @@ form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.2rem;
     <canvas class="stars" id="stars" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="h-copy">
-        <p class="mono eyebrow" data-a="up" data-en="Restaurant &amp; Pizzeria · Velika Plaža, Ulcinj">Restoran &amp; Picerija · Velika Plaža, Ulcinj</p>
-        <h1 data-split><span class="script">La Luna</span><span data-en="Dinner by the sea, under the <em>moon</em> of Velika Plaža.">Večera uz more, pod <em>mjesecom</em> Velike plaže.</span></h1>
-        <p class="lede" data-a="up" data-en="Seafood, grill, pasta and pizza on a terrace that looks out over the longest beach on the Adriatic.">Plodovi mora, roštilj, pasta i pica na terasi koja gleda na najdužu plažu na Jadranu.</p>
+        <p class="mono eyebrow" data-a="up" data-en="Restaurant &amp; Pizzeria · Ulcinj">Restoran &amp; Picerija · Ulcinj</p>
+        <h1 data-split><span class="script">La Luna</span><span data-en="Dinner by the <em>sea</em>.">Večera uz <em>more</em>.</span></h1>
         <div class="cta-row" data-a="up">
           <a class="btn btn-moon mag" href="#rezervacije"><span data-en="Book a table">Rezerviši sto</span><span class="arr" aria-hidden="true">→</span></a>
           <a class="btn btn-ghost mag" href="#meni"><span data-en="See the menu">Pogledaj meni</span></a>
         </div>
-        <div class="facts" data-a="up">
-          <div><span class="mono" data-en="Kitchen">Kuhinja</span><b data-en="Seafood · Grill · Pizza">More · Roštilj · Pica</b></div>
-          <div><span class="mono" data-en="Where">Gdje</span><b>Port Milena, Ulcinj</b></div>
-          <div><span class="mono" data-en="Phone">Telefon</span><b>+382 69 712 627</b></div>
-        </div>
+        <div class="h-info mono" data-a="up"><span>+382 69 712 627</span><span>Port Milena · Velika Plaža</span></div>
       </div>
-      <div class="arch-col">
-        <div class="arch" id="arch" data-a="img" data-cursor="La Luna">
-          <div class="slide on" data-cap="Terasa u sumrak" data-cap-en="Terrace at dusk"><img data-k="terrace_dusk" alt="Terasa La Lune sa drvenim klupama u sumrak"></div>
-          <div class="slide" data-cap="Pravo sa roštilja" data-cap-en="Straight from the grill"><img data-k="service" alt="Konobar nosi meso na kamenim pločama"></div>
-          <div class="slide" data-cap="Ljetna večer na terasi" data-cap-en="Summer evening on the terrace"><img data-k="terrace_night" alt="Puna terasa La Lune noću"></div>
-          <div class="slide" data-cap="Sala otvorena prema moru" data-cap-en="Dining room open to the terrace"><img data-k="dining_room" alt="Sala restorana otvorena prema terasi"></div>
-        </div>
-        <div class="slide-meta" data-a="up">
-          <span class="count" id="sCount">01 / 04</span>
-          <span class="cap mono" id="sCap">Terasa u sumrak</span>
-          <div class="bars" id="bars">
-            <button type="button" class="on" aria-label="Slika 1"><i></i></button>
-            <button type="button" aria-label="Slika 2"><i></i></button>
-            <button type="button" aria-label="Slika 3"><i></i></button>
-            <button type="button" aria-label="Slika 4"><i></i></button>
+      <div class="collage">
+        <div class="arch-col">
+          <div class="arch" id="arch" data-a="img" data-cursor="La Luna">
+            <div class="slide on" data-cap="Terasa u sumrak" data-cap-en="Terrace at dusk"><img data-k="terrace_dusk" alt="Terasa La Lune sa drvenim klupama u sumrak"></div>
+            <div class="slide" data-cap="Pravo sa roštilja" data-cap-en="Straight from the grill"><img data-k="service" alt="Konobar nosi meso na kamenim pločama"></div>
+            <div class="slide" data-cap="Ljetna večer na terasi" data-cap-en="Summer evening on the terrace"><img data-k="terrace_night" alt="Puna terasa La Lune noću"></div>
+            <div class="slide" data-cap="Sala otvorena prema moru" data-cap-en="Dining room open to the terrace"><img data-k="dining_room" alt="Sala restorana otvorena prema terasi"></div>
           </div>
+          <div class="slide-meta" data-a="up">
+            <span class="count" id="sCount">01 / 04</span>
+            <span class="cap mono" id="sCap">Terasa u sumrak</span>
+            <div class="bars" id="bars">
+              <button type="button" class="on" aria-label="Slika 1"><i></i></button>
+              <button type="button" aria-label="Slika 2"><i></i></button>
+              <button type="button" aria-label="Slika 3"><i></i></button>
+              <button type="button" aria-label="Slika 4"><i></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="side">
+          <a class="side-plate" href="#meni" data-a="img" data-cursor="Meni" aria-label="Meni: Pizza Frutti di Mare"><img data-k="pizza" alt="Pizza Frutti di Mare"></a>
+          <a class="side-card" href="#galerija" data-a="img" data-cursor="Pogledaj" aria-label="Galerija"><img data-k="seafood" alt="Miješani plodovi mora na pladnju"><span class="chip mono"><span data-en="Gallery">Galerija</span> →</span></a>
         </div>
       </div>
     </div>
@@ -621,35 +637,23 @@ form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.2rem;
     </div>
   </div>
 
-  <div class="intro">
-    <div class="wrap">
-      <div class="intro-txt">
-        <p class="mono eyebrow" data-a="up" data-en="Welcome">Dobrodošli</p>
-        <h2 data-split data-en="Where Ulcinj ends and Velika Plaža begins.">Tamo gdje se Ulcinj završava, a Velika plaža počinje.</h2>
-        <p data-a="up" data-en="We are by Port Milena, a few steps from the sand. From the terrace you look past the olive tree straight onto the sea.">Nalazimo se kod Port Milene, par koraka od pijeska. Sa terase se gleda preko masline pravo na more.</p>
-        <a class="textlink" href="#o-nama" data-a="up"><span data-en="Our story">Naša priča</span> <span aria-hidden="true">→</span></a>
-      </div>
-      <figure class="par" data-a="img" style="margin:0" data-cursor="More"><img data-k="sea" data-par=".12" alt="Pogled sa terase na maslinu i more Velike plaže"><figcaption class="mono" data-en="View from our terrace">Pogled sa naše terase</figcaption></figure>
-    </div>
-  </div>
-
   <div class="teasers">
     <div class="wrap">
       <div class="t-head">
-        <div><p class="mono eyebrow" data-a="up" data-en="Explore">Istražite</p><h2 data-split data-en="Get to know La Luna">Upoznajte La Lunu</h2></div>
+        <h2 data-split data-en="Get to know La Luna">Upoznajte La Lunu</h2>
       </div>
       <div class="t-grid">
         <a class="teaser" href="#o-nama" data-cursor="Otvori">
-          <figure data-a="img"><img data-k="terrace_dusk" alt="Terasa La Lune u sumrak"></figure>
-          <div class="row" data-a="up"><div><p class="mono" data-en="Our story">Naša priča</p><h3 data-en="About us">O nama</h3></div><span class="circ" aria-hidden="true">→</span></div>
+          <figure data-a="img"><img data-k="dining_room" alt="Sala La Lune otvorena prema terasi"></figure>
+          <div class="row" data-a="up"><div><h3 data-en="About us">O nama</h3></div><span class="circ" aria-hidden="true">→</span></div>
         </a>
         <a class="teaser" href="#meni" data-cursor="Otvori">
           <figure data-a="img"><img data-k="pizza" alt="Pizza Frutti di Mare odozgo"></figure>
-          <div class="row" data-a="up"><div><p class="mono" data-en="Seafood, grill, pizza">More, roštilj, pica</p><h3 data-en="Menu">Meni</h3></div><span class="circ" aria-hidden="true">→</span></div>
+          <div class="row" data-a="up"><div><h3 data-en="Menu">Meni</h3></div><span class="circ" aria-hidden="true">→</span></div>
         </a>
         <a class="teaser" href="#galerija" data-cursor="Otvori">
           <figure data-a="img"><img data-k="terrace_night" alt="Terasa noću"></figure>
-          <div class="row" data-a="up"><div><p class="mono" data-en="Evenings on the beach">Večeri na plaži</p><h3 data-en="Gallery">Galerija</h3></div><span class="circ" aria-hidden="true">→</span></div>
+          <div class="row" data-a="up"><div><h3 data-en="Gallery">Galerija</h3></div><span class="circ" aria-hidden="true">→</span></div>
         </a>
       </div>
     </div>
@@ -657,7 +661,7 @@ form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.2rem;
 
   <div class="band">
     <div class="wrap">
-      <div><h2 data-split data-en="A table for tonight?">Sto za večeras?</h2><p data-a="up" data-en="Book in under a minute, or call +382 69 712 627.">Rezervišite za manje od minute, ili pozovite +382 69 712 627.</p></div>
+      <h2 data-split data-en="A table for tonight?">Sto za večeras?</h2>
       <a class="btn btn-moon mag" href="#rezervacije" data-a="up"><span data-en="Book a table">Rezerviši sto</span><span class="arr" aria-hidden="true">→</span></a>
     </div>
   </div>
@@ -665,7 +669,7 @@ form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.2rem;
 
 <!-- ======================= O NAMA ======================= -->
 <section class="page" id="p-o-nama" data-page="o-nama" aria-label="O nama">
-  <div class="phead">
+  <div class="phead"><div class="pbg" aria-hidden="true"><img data-k="terrace_dusk" data-par=".18" alt=""></div>
     <div class="wrap">
       <div><p class="mono eyebrow" data-a="up" data-en="About us">O nama</p><h1 data-split data-en="A restaurant and pizzeria at the start of Velika Plaža">Restoran i picerija na početku Velike plaže</h1></div>
       <p class="lede" data-a="up" data-en="Ulcinj, Port Milena. A few steps from the sand, with the sea in view from the terrace.">Ulcinj, Port Milena. Par koraka od pijeska, sa pogledom na more sa terase.</p>
@@ -728,7 +732,7 @@ form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.2rem;
 
 <!-- ======================= MENI ======================= -->
 <section class="page" id="p-meni" data-page="meni" aria-label="Meni">
-  <div class="phead">
+  <div class="phead"><div class="pbg" aria-hidden="true"><img data-k="seafood" data-par=".18" alt=""></div>
     <div class="wrap">
       <div><p class="mono eyebrow" data-a="up" data-en="From our kitchen">Iz naše kuhinje</p><h1 data-split data-en="Menu">Jelovnik</h1></div>
       <p class="lede" data-a="up" data-en="Hover or tap a dish to see the plate. These are the dishes we share most often; the full menu and prices are waiting at the restaurant.">Pređite preko jela ili ga dodirnite da vidite tanjir. Ovo su jela koja najčešće dijelimo. Kompletan jelovnik i cijene čekaju vas u restoranu.</p>
@@ -758,7 +762,7 @@ form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.2rem;
 
 <!-- ======================= GALERIJA ======================= -->
 <section class="page gal" id="p-galerija" data-page="galerija" aria-label="Galerija">
-  <div class="phead">
+  <div class="phead"><div class="pbg" aria-hidden="true"><img data-k="sea" data-par=".18" alt=""></div>
     <div class="wrap">
       <div><p class="mono eyebrow" data-a="up" data-en="Gallery">Galerija</p><h1 data-split data-en="Evenings on Velika Plaža">Večeri na Velikoj plaži</h1></div>
       <p class="lede" data-a="up"><span data-en="Photos from our terrace and kitchen. Tap any photo to open it.">Fotografije sa naše terase i iz kuhinje. Dodirnite bilo koju da je otvorite.</span> <a href="https://www.instagram.com/_la____luna_/" target="_blank" rel="noopener">@_la____luna_ ↗</a></p>
@@ -850,7 +854,7 @@ form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.2rem;
 
 <!-- ======================= KONTAKT ======================= -->
 <section class="page" id="p-kontakt" data-page="kontakt" aria-label="Kontakt">
-  <div class="phead">
+  <div class="phead"><div class="pbg" aria-hidden="true"><img data-k="terrace_night" data-par=".18" alt=""></div>
     <div class="wrap">
       <div><p class="mono eyebrow" data-a="up" data-en="Contact &amp; location">Kontakt i lokacija</p><h1 data-split data-en="Find us">Kako do nas</h1></div>
       <p class="lede" data-a="up" data-en="At the start of Velika Plaža, by Port Milena. Parking in front of the terrace.">Na početku Velike plaže, kod Port Milene, u Ulcinju.</p>
@@ -1072,7 +1076,7 @@ sea:"data:image/webp;base64,UklGRhJEAgBXRUJQVlA4IAZEAgDQKAadASqgBSoDPpFAmUolo6Km
     document.title=t(NAMES[id][0],NAMES[id][1])+" · La Luna Ulcinj";
     $$('.nav a,.mnav a,#topBook').forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+id)});
     movePill(); top.classList.remove("hide");
-    mbar.classList.toggle("hide",id==="rezervacije");
+    heroBtns=false; mbar.classList.toggle("hide",id==="rezervacije");
     if(id==="pocetna") startSlides(); else stopSlides();
     onScroll();
   }
@@ -1101,7 +1105,10 @@ sea:"data:image/webp;base64,UklGRhJEAgBXRUJQVlA4IAZEAgDQKAadASqgBSoDPpFAmUolo6Km
   });
 
   /* ---------- header: hide on scroll down, progress, nav pill ---------- */
-  var top=$("#top"), mbar=$("#mbar"), lastY=0, ticking=false;
+  var top=$("#top"), mbar=$("#mbar"), lastY=0, ticking=false, heroBtns=false;
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){heroBtns=e.isIntersecting; if(cur==="pocetna") mbar.classList.toggle("hide",heroBtns)})}).observe($("#p-pocetna .cta-row"));
+  }
   function onScroll(){
     if(ticking) return; ticking=true;
     requestAnimationFrame(function(){
